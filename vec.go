@@ -1,7 +1,7 @@
 /*
 Copyright 2014 The Prometheus Authors
-Copyright 2019 Kane York
 Copyright 2019 Google LLC
+Copyright 2019 Kane York
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,6 +17,14 @@ limitations under the License.
 */
 
 package topk
+
+import (
+	"bytes"
+	"fmt"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/common/model"
+)
 
 // The contents of this file are copied heavily from github.com/prometheus/client_golang/prometheus/vec.go
 

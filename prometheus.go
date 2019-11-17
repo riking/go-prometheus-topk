@@ -1,6 +1,6 @@
 /*
-Copyright 2019 Kane York
 Copyright 2019 Google LLC
+Copyright 2019 Kane York
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ limitations under the License.
 package topk
 
 import (
-	"bytes"
 	"fmt"
 	"strings"
 	"sync"
@@ -182,4 +181,3 @@ func (b *topkWithLabelValues) Observe(v float64) {
 func (b *topkWithLabelValues) Inc() {
 	b.Observe(1)
 }
-
