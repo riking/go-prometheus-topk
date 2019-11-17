@@ -1,4 +1,0 @@
-# go-prometheus-topk
-
-A custom Prometheus metric exporter wrapping the github.com/dgryski/go-topk library.
-
