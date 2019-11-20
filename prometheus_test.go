@@ -23,11 +23,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
+const metricName = "test_metric"
+
 func TestRegisterCollect(t *testing.T) {
+	const numBuckets = 3
+
 	reg := prometheus.NewPedanticRegistry()
 	k := NewTopK(TopKOpts{
-		Name:    "test_metric",
-		Buckets: 3,
+		Name:    metricName,
+		Buckets: numBuckets,
 	}, []string{"key"})
 
 	// Verify that registration and gathering work
@@ -54,12 +58,11 @@ func TestRegisterCollect(t *testing.T) {
 		t.Error(err)
 	}
 
-	return
-
 	for _, v := range mets {
-		t.Logf("# %s %v %s", *v.Name, v.Type, *v.Help)
-		for _, m := range v.Metric {
-			t.Logf("%v", m)
+		if *v.Name == metricName {
+			if len(v.Metric) != numBuckets {
+				t.Errorf("wrong metric count: got %v expected %v", len(mets), numBuckets)
+			}
 		}
 	}
 }
