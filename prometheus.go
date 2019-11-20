@@ -29,7 +29,6 @@ import (
 	tk "github.com/riking/go-prometheus-topk/internal/third_party/go-topk"
 
 	"github.com/prometheus/client_golang/prometheus"
-	dto "github.com/prometheus/client_model/go"
 	"github.com/prometheus/common/model"
 )
 
@@ -119,12 +118,6 @@ type topkCurry struct {
 type topkWithLabelValues struct {
 	compositeLabel string
 	root           *topkRoot
-}
-
-type resolvedMetric struct {
-	value      float64
-	labelPairs []*dto.LabelPair
-	ts         int64
 }
 
 var (
